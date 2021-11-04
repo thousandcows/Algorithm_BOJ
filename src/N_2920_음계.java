@@ -23,6 +23,7 @@ public class N_2920_음계 {
 		int count = 0;
 
 		for (int i = 0; i < compareArr.length; i++) {
+			
 			// ascending이라면 한 자릿수가 일치할 때마다 1씩 더해준다.
 			if (noteArr[i] == compareArr[i]) {
 				count++;
