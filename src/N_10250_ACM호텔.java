@@ -19,16 +19,16 @@ public class N_10250_ACM호텔 {
 			int guestNumber = scan.nextInt();
 			
 			// 배정될 방 번호 출력하기
-			String roomNumber = getRoomNumber(height, width, guestNumber);
+			int roomNumber = getRoomNumber(height, width, guestNumber);
 		
 			System.out.println(roomNumber);
 		}
 	}
 
-	private static String getRoomNumber(int height, int width, int guestNumber) {
+	private static int getRoomNumber(int height, int width, int guestNumber) {
 		
 		// 총 객실 수 길이 만큼의 배열 생성
-		String [] roomList = new String [height*width];
+		int [] roomList = new int [height*width];
 		
 		// 객실 수 세기
 		int index = 0;
@@ -36,7 +36,7 @@ public class N_10250_ACM호텔 {
 		// 배정되는 객실 순서대로 값을 배열에 입력하기
 		for (int i = 1; i <= width; i++) {
 			for (int j = 1; j <= height; j++) {
-				roomList[index] = Integer.toString(j * 100 + i) ;
+				roomList[index] = j * 100 + i ;
 				index++;
 			}
 		}
