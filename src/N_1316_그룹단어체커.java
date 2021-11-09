@@ -33,8 +33,6 @@ public class N_1316_그룹단어체커 {
 
 		for (int i = 1; i < arr.length-1; i++) {
 			
-			if(i == arr.length) break;
-			
 			if (!arr[i+1].equals(arr[i])) {
 				for(int j = 0; j < i+1; j++) {
 					if(arr[i+1].equals(arr[j])) {
