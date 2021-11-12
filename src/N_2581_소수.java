@@ -46,6 +46,5 @@ public class N_2581_소수 {
 		} else {						// 소수가 없는 경우
 			System.out.println(-1);
 		}
-
 	}
 }
