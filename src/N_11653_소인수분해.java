@@ -11,45 +11,30 @@ public class N_11653_소인수분해 {
 
 		// 정수 N 입력받기
 		int number = Integer.parseInt(br.readLine());
-
-		// 소인수분해 실행
-		int [] primeSet = primeSet(number);
 		
-		for(int i = 0; i < primeSet.length; i++) {
+		// StringBuilder 활용
+		StringBuilder sb = new StringBuilder();
+		
+		/*제곱근의 성질을 활용하면 i * i <= number 인 상황까지만 탐색해도 됨
+		예: number가 16인 경우 곱셈으로 분해하면 
+		1 * 16, 2 * 8, 4 * 4, 8 * 2, 16 * 1로 대칭적인 구조를 가지고 있음*/
 			
-			if(primeSet[i] >= 2 && number % primeSet[i] == 0){ 
-			
-				System.out.println(i);
+		for(int i = 2; i * i <= number; i++) {
+			while(number % i == 0) {
+				sb.append(i).append('\n');
 				number /= i;
-				i--;
 			}
 		}
-	}
-
-	// N 미만의 소수를 담는 배열을 생성하는 메서드
-	public static int [] primeSet (int number) {
-
-		// 에라토스테네스의 체
-		int [] primeSet = new int [number+1];
-
-		for(int i = 0; i < primeSet.length; i++) {
-			primeSet[i] = i;
+		
+		/*
+		 * 위 방식을 이용할 경우 나머지가 발생할 수 있는데, 이때 나머지는 반드시 1개의 소수이다.
+		 * 10을 예로 들면 위의 for문에서 2가 출력되는 반면 5는 걸러지지 않는다.
+		 * 따라서 입력한 수가 1이 아니라면 그 수가 소수인 나머지다.*/
+		if(number != 1) {
+			sb.append(number);
 		}
-
-		primeSet[0] = primeSet[1] = 0;
-
-		for (int i = 2; i*i < number; i ++) {
-
-			// 이미 0인 값은 다음 반복문으로 통과
-			if(primeSet[i] == 0) {
-				continue;
-			}
-
-			// i의 배수들을 지우는 반복문
-			for(int j = i*i; j < primeSet.length; j += i) {
-				primeSet[j] = 0;
-			}
-		}
-		return primeSet;
+		
+		// 결과 출력
+		System.out.println(sb);
 	}
 }
