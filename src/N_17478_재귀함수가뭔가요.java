@@ -57,7 +57,5 @@ public class N_17478_재귀함수가뭔가요 {
 		
 		// 재귀를 빠져나오면서 underline이 긴 문장부터 출력(라고 답변하였지)
 		System.out.println(dots + arr[6]);
-		
 	}
 }
-
