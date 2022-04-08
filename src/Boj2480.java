@@ -29,7 +29,7 @@ public class Boj2480 {
         }
         // c. case 2
         else{
-            number = (one == two) ? one : two;
+            number = (one == two) ? one : three;
             result = 1000 + number * 100;
         }
 

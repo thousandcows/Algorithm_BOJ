@@ -13,16 +13,13 @@ public class Boj11655 {
 		String sentence = br.readLine();
 
 		// 2. Do ROT13
-
 		for(int i = 0; i < sentence.length(); i++) {
 			// 65 ~ 90
 			// 97 ~ 122
 			char letter = sentence.charAt(i);
-			char newChar;
+			char newChar = (char) (letter + 13);
 
 			if((letter >= 65 && letter <= 90)) {
-
-				newChar = (char) (letter + 13);
 
 				if(newChar > 90) {
 					newChar = (char)(newChar - 26);
@@ -31,8 +28,6 @@ public class Boj11655 {
 				sb.append(newChar);
 
 			} else if((letter >= 97 && letter <= 122)) {
-
-				newChar = (char) (letter + 13);
 
 				if(newChar > 122) {
 					newChar = (char)(newChar - 26);
@@ -48,6 +43,4 @@ public class Boj11655 {
 		// 3. Print result
 		System.out.println(sb);
 	}
-
-
 }

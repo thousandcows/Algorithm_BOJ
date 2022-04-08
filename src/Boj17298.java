@@ -27,13 +27,13 @@ public class Boj17298 {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
+		// NGE
 		for(int i = 0; i < number; i++) {
 			
 			while(!s.isEmpty() && arr[s.peek()] < arr[i]) {
 				arr[s.pop()] = arr[i];
 			}
 			s.push(i);
-			
 		}
 		
 		while(!s.isEmpty()) {
@@ -45,7 +45,7 @@ public class Boj17298 {
 		}
 		
 		bw.flush();
-		bw.close();
+		bw.close(); 
 		
 	}
 }

@@ -27,6 +27,7 @@ public class Boj11726 {
 				arr[i] %= 10007;
 			}
 			System.out.println(arr[n]);
+			
 		}		
 	}
 }

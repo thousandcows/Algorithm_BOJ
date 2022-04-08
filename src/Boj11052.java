@@ -21,7 +21,6 @@ public class Boj11052 {
 
         // 2. Find the maxCost to have n cards
         maxArr[0] = 0;
-        System.out.println(maxArr[1]);
         for (int j = 1; j <= N; j++) {
             for (int k = 1; k <= j; k++) {
                 maxArr[j] = Math.max(maxArr[j], maxArr[j - k] + arr[k]);

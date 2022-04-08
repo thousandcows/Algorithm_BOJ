@@ -49,6 +49,7 @@ public class Boj17413 {
 				bw.write(ch); // write in original order
 
 			}
+			
 			// 4. flag == false
 			else {
 				if(ch == ' ') {

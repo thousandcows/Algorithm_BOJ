@@ -11,31 +11,25 @@ public class Boj4949 {
 		Stack <Character> stack = new Stack();
 
 		String str; // String case to read
-		char ch; // chracter to trim the String
-		StringBuilder newStr;
 		String answer;  // default = yes
+		StringBuilder sb = new StringBuilder();
 
 		while(true) {
 
 			// 1. Read the String
 			str = br.readLine();
-
-			newStr = new StringBuilder();
-
-			for(int i = 0; i < str.length(); i++) {
-				ch = str.charAt(i);
-				if(ch == '(' || ch == ')' || ch == '[' || ch == ']') {
-					newStr.append(ch);
-				}
+			
+			// End condition
+			if(str.equals(".")) {
+				break;
 			}
 
 			// 2. See if the String is balanced
 			char word;
 			
-			answer = "yes";
-			for(int i = 0; i < newStr.length(); i++){
+			for(int i = 0; i < str.length(); i++){
 				
-				word = newStr.charAt(i);
+				word = str.charAt(i);
 				
 				// if stack is empty
 				if(stack.isEmpty()) {
@@ -57,9 +51,6 @@ public class Boj4949 {
 							stack.push(word);
 						}else if(word == ')') {
 							stack.pop();
-						}else if(word == ']'){
-							answer = "no";
-							break;
 						}
 
 					}else if(stack.peek() == '[') {
@@ -68,26 +59,25 @@ public class Boj4949 {
 							stack.push(word);
 						}else if(word == ']') {
 							stack.pop();
-						}else if(word == ')'){
-							answer = "no";
-							break;
 						}
 					}
 				}
-			}
-			if(!stack.isEmpty()) {
-				answer = "no";
+				
+				// 4. Final check
+				if(stack.isEmpty()) {
+					sb.append("yes").append('\n');
+				} else {
+					sb.append("no").append('\n');
+				}
+				
 			}
 			
 			// 4. Clear stack
 			stack.clear();
 			
-			// 5. Print result
-			System.out.println(answer);
-			
-			if(str.equals(".")) {
-				break;
-			}
 		}
+		
+		// 5. Print result
+		System.out.println(sb);
 	}
 }

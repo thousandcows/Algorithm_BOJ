@@ -27,7 +27,5 @@ public class N_7891_CanYouAddThis {
 			System.out.println(numOne + numTwo);
 			
 		}
-		
 	}
-	
 }

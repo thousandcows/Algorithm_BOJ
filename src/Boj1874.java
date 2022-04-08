@@ -21,21 +21,21 @@ public class Boj1874 {
 		Stack <Integer> stack = new Stack();
 		StringBuilder sb = new StringBuilder();
 
-		// a. !isEmpty() && i == targetArray[i] : pop
+		
 		int index = 0;
 		int i = 0;
 		while(true) {
-
+			// a. !isEmpty() && stack.peek() == targetArray[i] : pop
 			while(!stack.isEmpty() && stack.peek() == target[index]) {
 				stack.pop();
 				sb.append("-").append('\n');
-				index++;
+				index++; // move to the next number in target array
 			}
 			
-			if(i == n) break;
+			if(i == n) break; // while loop end condition
 			
+			// b. push if they finished the first while loop
 			stack.push(++i);
-			
 			sb.append("+").append('\n');
 		}
 
