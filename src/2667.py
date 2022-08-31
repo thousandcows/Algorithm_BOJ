@@ -1,49 +1,41 @@
-from collections import deque
+def bfs(map, visited, row, col):
+    global size, count
 
+    # 방문 처리
+    visited[row][col] = True
 
-def bfs():
-    queue = deque()
+    # 방향을 나타내는 direction
+    directions = [[0, 1], [1, 0], [-1, 0], [0, -1]]
+    for d in directions:
+        nr = d[1] + row
+        nc = d[0] + col
+        if 0 <= nr < size and 0 <= nc < size:
+            if not visited[nr][nc] and map[nr][nc] == 1:
+                count += 1
+                bfs(map, visited, nr, nc)
 
-    for i in range(size):
-        for j in range(size):
-            if apartment_map[i][j] == 1:
-
-                queue.append((i, j))
-
-                apartment_map[i][j] += 1
-
-                apartment_group.append(1)
-
-                while queue:
-                    row, col = queue.popleft()
-
-                    for x, y in DIRECTION:
-                        nx = row + x
-                        ny = col + y
-
-                        if 0 <= nx < size and 0 <= ny < size:
-                            if apartment_map[nx][ny] == 1:
-                                apartment_group[-1] += 1
-                                apartment_map[nx][ny] += 1
-                                queue.append((nx, ny))
-
-
-
-DIRECTION = [(1, 0), (0, 1), (-1, 0), (0, -1)]
-
-# 1. Read the size of the map
+# 입력
 size = int(input())
 
-# 2. Map initialization
-apartment_map = []
-apartment_group = []
+map = []
+visited = []
+for _ in range(size):
+    row = input()
+    map.append([int(i) for i in row])
+    visited.append([False for i in row])
 
-for i in range(size):
-    apartment_map.append(list(map(int, input())))
+# BFS로 지도 탐색
+group = []
+count = 1
 
-# 3. Count the number of apartment group
-bfs()
-sorted(apartment_group)
-print(len(apartment_group))
-for i in apartment_group:
-    print(i)
+for row in range(size):
+    for col in range(size):
+        if map[row][col] == 1 and not visited[row][col]:
+            count = 1
+            bfs(map, visited, row, col)
+            group.append(count)
+
+# 정렬하여 출력
+print(len(group))
+for g in sorted(group):
+    print(g)
