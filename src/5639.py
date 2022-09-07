@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10 ** 3)
+sys.setrecursionlimit(10 ** 4)
 
 # Graph: stack
 tree = []
