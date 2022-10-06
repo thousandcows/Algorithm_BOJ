@@ -1,30 +1,21 @@
-import sys
-from typing import List
+height, width = map(int, input().split())
+blocks = list(map(int, input().split()))
 
-height, width = map(int, sys.stdin.readline().split())
-blocks = list(map(int, sys.stdin.readline().split()))
+volume = 0
 
+left = 0
+right = len(blocks) - 1
 
-def calculate_water(water_blocks: List[int]) -> int:
-    if not water_blocks:
-        return 0
+left_max, right_max, = blocks[left], blocks[right]
 
-    volume = 0  # variable to store water count
-    left, right = 0, len(water_blocks) - 1  # two pointers to move
-    left_max, right_max = water_blocks[left], water_blocks[right]
+while left < right:
+    left_max, right_max = max(left_max, blocks[left]), max(right_max, blocks[right])
 
-    while left < right:
-        left_max = max(water_blocks[left], left_max)
-        right_max = max(water_blocks[right], right_max)
+    if left_max <= right_max:
+        volume += left_max - blocks[left]
+        left += 1
+    else:
+        volume += right_max - blocks[right]
+        right -= 1
 
-        if left_max <= right_max:
-            volume += left_max - water_blocks[left]
-            left += 1
-        else:
-            volume += right_max - water_blocks[right]
-            right -= 1
-
-    return volume
-
-
-print(calculate_water(blocks))
+print(volume)
