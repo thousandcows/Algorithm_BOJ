@@ -1,4 +1,4 @@
-string = list(input())
+string = input()
 
 palindrome = string[::-1]
 
