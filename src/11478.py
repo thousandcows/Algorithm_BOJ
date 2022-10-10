@@ -1,8 +1,4 @@
 s = input()
-word_set = set()
+string_length = len(s)
 
-for i in range(len(s)):
-    for j in range(i, len(s)):
-        word_set.add(s[i:j + 1])
-
-print(len(word_set))
+print(sum(len(set(s[start:start + end] for start in range(string_length - end + 1))) for end in range(1, string_length + 1)))
