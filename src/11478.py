@@ -3,7 +3,6 @@ s = input()
 word_set = set()
 
 
-# function to create new word
 def dfs(idx: int, word: str) -> None:
     if idx > len(s) - 1:
         return
@@ -14,11 +13,8 @@ def dfs(idx: int, word: str) -> None:
     dfs(idx + 1, new_word)
 
 
-# Make word starting at each index
-for i in range(len(s)):
+for i, w in enumerate(s):
+    word_set.add(w)
+    dfs(i + 1, w)
 
-    word_set.add(s[i])
-    dfs(i + 1, s[i])
-
-# Print answer
 print(len(word_set))
