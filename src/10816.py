@@ -1,10 +1,18 @@
-from collections import defaultdict
 N = int(input())
-card_list = defaultdict(int)
 
-for num in input().split():
-    card_list[num] += 1
+plus_card_list = [0 for _ in range(10000001)]
+minus_card_list = [0 for _ in range(10000001)]
+
+card_info = list(map(int, input().split()))
+
+for num in card_info:
+    if num > 0:
+        plus_card_list[num] += 1
+    else:
+        minus_card_list[-num] += 1
 
 M = int(input())
-for num in input().split():
-    print(card_list[num] if num in card_list else 0, end=" ")
+check_info = list(map(int, input().split()))
+
+for num in check_info:
+    print(plus_card_list[num] if num > 0 else minus_card_list[-num], end=" ")
