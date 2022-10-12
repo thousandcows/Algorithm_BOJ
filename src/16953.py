@@ -20,7 +20,7 @@ def dfs(start: int, count: int):
 
     # Continue dfs if B has not been made
     dfs(start * 2, count + 1)
-    dfs(int(str(start) + '1'), count + 1)
+    dfs(start * 10 + 1, count + 1)
 
 
 dfs(A, 0)
