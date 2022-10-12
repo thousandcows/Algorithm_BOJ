@@ -1,16 +1,20 @@
-numbers, length = map(int, input().split())
+import sys
+
+inputs = sys.stdin.read().splitlines()
+
+numbers, length = map(int, inputs[0].split())
 
 # Input information
-dna_list = list()
-for _ in range(numbers):
-    dna_list.append(input())
+dna_list = list(dna for dna in inputs[1:])
 
 # Answer variables
 s = ""
 min_distance = 0
+word_to_add = ['A', 'C', 'G', 'T']
 
 # Search each column to find minimum distance
 for i in range(length):
+
     dict_to_count = [0, 0, 0, 0]    # A, C, G, T
 
     # Search each dna's index by column
@@ -28,15 +32,7 @@ for i in range(length):
     result = max(dict_to_count)
     index = dict_to_count.index(result)
 
-    if index == 0:
-        s += 'A'
-    elif index == 1:
-        s += 'C'
-    elif index == 2:
-        s += 'G'
-    else:
-        s += 'T'
-
+    s += word_to_add[index]
     min_distance += numbers - result
 
 # Print answer
