@@ -7,7 +7,7 @@ number_list.sort()
 left, right = 0, len(number_list) - 1
 ans = 0
 
-while left != right:
+while left < right:
     if number_list[left] + number_list[right] < target_number:
         left += 1
     elif number_list[left] + number_list[right] > target_number:
@@ -15,5 +15,6 @@ while left != right:
     else:
         ans += 1
         left += 1
+        right -= 1
 
 print(ans)
