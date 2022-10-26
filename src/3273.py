@@ -1,15 +1,11 @@
-import sys
-
-re = sys.stdin.readline
-
-n = int(re())
-number_list = [int(i) for i in re().split()]
-target_number = int(re())
+n = int(input())
+number_list = [int(i) for i in input().split(' ')]
+target_number = int(input())
 
 number_list.sort()
-ans = 0
 
 left, right = 0, len(number_list) - 1
+ans = 0
 
 while left != right:
     if number_list[left] + number_list[right] < target_number:
