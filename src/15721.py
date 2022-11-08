@@ -1,29 +1,25 @@
-import sys
-
-read = sys.stdin.readline
-
 # Read game information
-number_of_people = int(read())
-target_count = int(read())
-word_to_count = int(read())
+number_of_people = int(input())
+goal = int(input())
+target_word = int(input())
 
 curr_turn = 1   # counts the turn of the game
-count = 0   # counts the target word
+word_count = 0   # counts the target word
 total_count = 0
 
 # Runs until count == target_count
-while count < target_count:
+while word_count < goal:
 
     # Sentence of each turn
     curr_sentence = [0, 1, 0, 1] + [0 for _ in range(curr_turn + 1)] + [1 for _ in range(curr_turn + 1)]
 
     for word in curr_sentence:
-        if word == word_to_count:
-            count += 1
+        if word == target_word:
+            word_count += 1
 
         total_count += 1
 
-        if count == target_count:
+        if word_count == goal:
             break
 
     curr_turn += 1
