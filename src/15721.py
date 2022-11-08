@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 
 read = sys.stdin.readline
 
@@ -8,14 +7,9 @@ number_of_people = int(read())
 target_count = int(read())
 word_to_count = int(read())
 
-# Declare deque and save people
-queue = deque()
-for i in range(0, number_of_people):
-    queue.append(i)
-
 curr_turn = 1   # counts the turn of the game
 count = 0   # counts the target word
-ans = 0     # saves the current person's number
+total_count = 0
 
 # Runs until count == target_count
 while count < target_count:
@@ -24,16 +18,17 @@ while count < target_count:
     curr_sentence = [0, 1, 0, 1] + [0 for _ in range(curr_turn + 1)] + [1 for _ in range(curr_turn + 1)]
 
     for word in curr_sentence:
-        ans = queue.popleft()
         if word == word_to_count:
             count += 1
+
+        total_count += 1
 
         if count == target_count:
             break
 
-        queue.append(ans)
-
     curr_turn += 1
 
 # Print answer
+result = total_count % number_of_people
+ans = result - 1 if result != 0 else number_of_people - 1
 print(ans)
