@@ -3,35 +3,35 @@ from itertools import combinations
 
 input = sys.stdin.readline
 
+# Read data
 table_size = int(input())
-players = [i for i in range(1, table_size + 1)]
-capability_store = [[int(i) for i in input().split()] for _ in range(table_size)]
+player_combination_capability = [list(map(int, input().split())) for _ in range(table_size)]
 
+# Calculate the sum of each row and column
+row_capability = [sum(i) for i in player_combination_capability]
+col_capability = [sum(i) for i in zip(*player_combination_capability)]
 
-def add_capability(team_members):
-    total = 0
-    for i in range(len(team_members) - 1):
-        for j in range(i + 1, len(team_members)):
-            first = team_members[i]
-            second = team_members[j]
-            total += capability_store[first - 1][second - 1] + capability_store[second - 1][first - 1]
+# Store the sum of row and col of same index
+capability_sum_list = [i + j for i, j in zip(row_capability, col_capability)]
 
-    return total
+total_capability = sum(row_capability + col_capability) // 2    # sum of total capability
 
+answer = sys.maxsize    # variable to store answer
 
-min_value = table_size ** 2 * 100
-for start_team_count in range(1, (table_size // 2) + 1):
+# Find the answer with for-loop
+for start_team_count in range(1, table_size // 2 + 1):
 
-    start_team_cases = list(combinations(players, start_team_count))
+    start_team_cases = list(combinations(capability_sum_list, start_team_count))
 
     for start_team in start_team_cases:
-        link_team = list()
-        for player in players:
-            if player not in start_team:
-                link_team.append(player)
-        current_difference = abs(add_capability(start_team) - add_capability(link_team))
 
-        if current_difference < min_value:
-            min_value = current_difference
+        answer = min(answer, abs(total_capability - sum(start_team)))
 
-print(min_value)
+        if answer == 0:
+            break
+
+    if answer == 0:
+        break
+
+# Print answer
+print(answer)
