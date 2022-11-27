@@ -1,10 +1,8 @@
-import sys
 from itertools import permutations
-read = sys.stdin.readline
 
-n = int(read())
-k = int(read())
-card_list = [read().strip() for _ in range(n)]
+n = int(input())
+k = int(input())
+card_list = [input() for _ in range(n)]
 permutations_list = list(permutations(card_list, k))
 
 result = set()
