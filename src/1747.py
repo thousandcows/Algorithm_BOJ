@@ -3,26 +3,30 @@ import math
 # 1. Read target number 'N'
 target_number = int(input())
 
+# 2. Generate prime number list
+prime_number_list = [1, 1] + [0] * 1003000
 
-# 2. Prime number checker
-def is_prime_number(number: int) -> bool:
-    for i in range(2, int(math.sqrt(number) + 1)):
-        if number % i == 0:
+for number in range(2, int(math.sqrt(1003001)) + 1):
+    if prime_number_list[number] == 0:
+        multiplier = 2
+        while number * multiplier <= 1003001:
+            prime_number_list[number * multiplier] = 1
+            multiplier += 1
+
+
+# 3. Palindrome checker
+def is_palindrome(number: int) -> bool:
+    str_number = str(number)
+    for i in range(len(str_number) // 2):
+        if str_number[i] != str_number[-i - 1]:
             return False
     return True
 
 
-# 3. Palindrome checker
-def is_palindrome(number: str) -> bool:
-    return number == number[::-1]
-
-
 # 3. Print the first prime number that is palindrome
-current_number = target_number if target_number != 1 else 2
-
-while True:
-    if is_prime_number(current_number) and is_palindrome(str(current_number)):
+for i in range(target_number, 1003002):
+    if prime_number_list[i] == 1:
+        continue
+    if is_palindrome(i):
+        print(i)
         break
-    current_number += 1
-
-print(current_number)
