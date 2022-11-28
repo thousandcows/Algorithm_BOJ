@@ -12,17 +12,17 @@ def is_prime_number(number: int) -> bool:
     return True
 
 
+# 3. Palindrome checker
 def is_palindrome(number: str) -> bool:
     return number == number[::-1]
 
 
 # 3. Print the first prime number that is palindrome
-current_number = target_number
+current_number = target_number if target_number != 1 else 2
 
 while True:
-    if is_prime_number(current_number):
-        if is_palindrome(str(current_number)):
-            print(current_number)
-            break
-
+    if is_prime_number(current_number) and is_palindrome(str(current_number)):
+        break
     current_number += 1
+
+print(current_number)
