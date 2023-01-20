@@ -17,9 +17,8 @@ def main():
         for member in members_satisfaction_list:
             curr_sum += max([member[idx] for idx in case])
 
-        if curr_sum > ans:
-            ans = curr_sum
-
+        ans = max(curr_sum, ans)
+        
     print(ans)
 
 
