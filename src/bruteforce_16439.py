@@ -9,17 +9,16 @@ def main():
     chicken_list = [i for i in range(0, chickens)]
 
     ans = 0
-    for count in range(1, 4):
-        combination = combinations(chicken_list, count)
+    combination = combinations(chicken_list, 3)
 
-        for case in combination:
-            curr_sum = 0
+    for case in combination:
+        curr_sum = 0
 
-            for member in members_satisfaction_list:
-                curr_sum += max([member[idx] for idx in case])
+        for member in members_satisfaction_list:
+            curr_sum += max([member[idx] for idx in case])
 
-            if curr_sum > ans:
-                ans = curr_sum
+        if curr_sum > ans:
+            ans = curr_sum
 
     print(ans)
 
